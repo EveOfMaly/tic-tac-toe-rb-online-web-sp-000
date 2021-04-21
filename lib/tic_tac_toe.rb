@@ -44,14 +44,14 @@ end
 
 def turn_count(board)
   counter = 0 
-  
-  board.each do |moves|
-    if moves == "X" || moves == "O"
-      counter +=1 
-    end 
-  end 
-  return counter
+  board.each do |i|
+    if i == "X" || i == "O" 
+      counter += 1
+    end
+  end
+  counter
 end
+
   
   
 def current_player(board)
