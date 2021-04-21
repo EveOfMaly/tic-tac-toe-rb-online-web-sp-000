@@ -83,7 +83,7 @@ def won?(board)
     win_index2 = combination[1]   #win_index1 = 4
     win_index3 = combination[2]   #win_index1 = 8
     
-    position_1 = board[win_index1] #value at the board 
+    position_1 = board[win_index1]  
     position_2 = board[win_index2]
     position_3 = board[win_index3]
     
@@ -93,6 +93,66 @@ def won?(board)
   end
   return false
 end
+
+
+def full?(board)
+  if turn_count(board) != 9
+    return false
+  else
+    return true
+  end
+end
+
+def draw?(board)
+ if !won?(board) && full?(board)
+     return true
+  else won?(board)
+     return false
+   end
+end
+
+
+def over?(board)
+  if won?(board) || draw?(board) || full?(board) 
+    return true 
+  else
+    return false
+  end
+end 
+
+
+
+def over?(board)
+  won?(board) || draw?(board) || full?(board)
+end
+
+def winner(board)
+  if (draw?(board) || !full?(board)) && !won?(board)
+return nil
+  elsif board[won?(board)[0]] == "X"
+    return "X"
+  elsif board[won?(board)[0]] == "O"
+      return "O"
+  end
+end
+
+def play(board)
+  while !over?(board) && !won?(board) && !draw?(board)
+    turn(board)
+  end
+  
+  if won?(board)
+     puts "Congratulations #{winner(board)}!"
+  end 
+  
+  if draw?(board) 
+    puts "Cat's Game!"
+  end 
+end
+
+  
+
+
 
 
   
